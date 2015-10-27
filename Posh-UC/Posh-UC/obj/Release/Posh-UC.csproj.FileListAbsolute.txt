@@ -1,0 +1,4 @@
+D:\Code\Posh-UC\Stable Release\Posh-UC.dll
+D:\Code\Posh-UC\Stable Release\Posh-UC.pdb
+D:\Code\Posh-UC\Posh-UC\Posh-UC\obj\Release\Posh-UC.dll
+D:\Code\Posh-UC\Posh-UC\Posh-UC\obj\Release\Posh-UC.pdb
