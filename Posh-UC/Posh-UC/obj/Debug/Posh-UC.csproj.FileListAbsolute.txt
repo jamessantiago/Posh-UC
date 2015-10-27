@@ -1,0 +1,10 @@
+D:\Code\Posh-UC\Posh-UC\Posh-UC\bin\Debug\Posh-UC.dll
+D:\Code\Posh-UC\Posh-UC\Posh-UC\bin\Debug\Posh-UC.pdb
+D:\Code\Posh-UC\Posh-UC\Posh-UC\bin\Debug\AxlNetClient.dll
+D:\Code\Posh-UC\Posh-UC\Posh-UC\bin\Debug\System.Management.Automation.dll
+D:\Code\Posh-UC\Posh-UC\Posh-UC\obj\Debug\Posh-UC.csprojResolveAssemblyReference.cache
+D:\Code\Posh-UC\Posh-UC\Posh-UC\obj\Debug\Posh-UC.dll
+D:\Code\Posh-UC\Posh-UC\Posh-UC\obj\Debug\Posh-UC.pdb
+D:\Code\Posh-UC\Posh-UC\Posh-UC\bin\Debug\AxlNetClient.Generated.dll
+D:\Code\Posh-UC\Posh-UC\Posh-UC\bin\Debug\AxlNetClient.pdb
+D:\Code\Posh-UC\Posh-UC\Posh-UC\bin\Debug\AxlNetClient.Generated.pdb
