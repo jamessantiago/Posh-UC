@@ -24,7 +24,7 @@ namespace Posh_UC
         {
             get
             {
-                if (instance != null)
+                if (instance == null)
                 {
                     lock (syncRoot)
                     {
