@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Management.Automation;
 using System.IO;
 using AxlNetClient;
@@ -9,8 +10,8 @@ using AxlNetClient;
 
 namespace Posh_UC
 {
-    [Cmdlet(VerbsLifecycle.Invoke, "UcSqlCommand")]
-    public class UcSqlCommand : PSCmdlet
+    [Cmdlet(VerbsLifecycle.Invoke, "UcSqlCmd")]
+    public class UcSqlCmd : PSCmdlet
     {
         protected override void BeginProcessing()
         {
@@ -33,7 +34,9 @@ namespace Posh_UC
             if (data.Exception != null)
                 throw data.Exception;
             else
-                WriteObject(data.Value);
+            {
+                WriteObject(data.Value, true);
+            }
         }
 
         [Parameter(

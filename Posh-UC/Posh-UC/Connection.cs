@@ -50,16 +50,20 @@ namespace Posh_UC
             });
             var testResults = tempClient.Execute(client =>
             {
-                var res = client.getUser(new GetUserReq
+                var res = client.getAppUser(new GetAppUserReq
                 {
-                    ItemElementName = ItemChoiceType100.userid,
+                    ItemElementName = ItemChoiceType102.userid,
                     Item = Username
                 });
             });
             if (testResults.Exception != null)
                 throw testResults.Exception;
             else
+            {
+                Client = tempClient;
                 Loaded = true;
+            }
+            
         }
 
         public void Disconnect()
@@ -77,9 +81,15 @@ namespace Posh_UC
     {
         protected override void ProcessRecord()
         {
-            CurrentAxlClient.Instance.Connect(Server, Username, Password);
-            if (CurrentAxlClient.Instance.Loaded)
-                WriteObject("Successfully connected the AXL client");
+            Exception failure = null;
+            try { CurrentAxlClient.Instance.Connect(Server, Username, Password); }
+            catch (Exception ex) { failure = ex; }
+            
+            WriteObject(CurrentAxlClient.Instance.Loaded);
+            if (failure != null)
+            {
+                Console.WriteLine(string.Format("Failed to connect: {0}", failure.Message));
+            }
         }
 
         [Parameter(
