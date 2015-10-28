@@ -81,14 +81,21 @@ namespace Posh_UC
     {
         protected override void ProcessRecord()
         {
-            Exception failure = null;
-            try { CurrentAxlClient.Instance.Connect(Server, Username, Password); }
-            catch (Exception ex) { failure = ex; }
-            
-            WriteObject(CurrentAxlClient.Instance.Loaded);
-            if (failure != null)
+            if (!CurrentAxlClient.Instance.Loaded || Force)
             {
-                Console.WriteLine(string.Format("Failed to connect: {0}", failure.Message));
+                Exception failure = null;
+                try { CurrentAxlClient.Instance.Connect(Server, Username, Password); }
+                catch (Exception ex) { failure = ex; }
+
+                WriteObject(CurrentAxlClient.Instance.Loaded);
+                if (failure != null)
+                {
+                    Console.WriteLine(string.Format("Failed to connect: {0}", failure.Message));
+                }
+            } else
+            {
+                WriteObject(CurrentAxlClient.Instance.Loaded);
+                Console.WriteLine("The AXL client is already loaded.  Use the -Force switch to reconnect");
             }
         }
 
@@ -118,6 +125,14 @@ namespace Posh_UC
             Position = 2,
             HelpMessage = "AXL password to connect with")]
         public string Password;
+
+        [Parameter(
+            ParameterSetName = "Byte",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "Force to connect even if the AXL client is already loaded")]
+        public SwitchParameter Force;
     }
 
     [Cmdlet(VerbsCommunications.Disconnect, "UcServer")]
