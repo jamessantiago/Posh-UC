@@ -30,6 +30,7 @@
     <Content Include="RunTests.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Phones.Tests.ps1" />
     <Compile Include="Sql.Tests.ps1" />
     <Compile Include="Users.Tests.ps1" />
   </ItemGroup>
