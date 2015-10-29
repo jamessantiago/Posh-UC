@@ -23,3 +23,14 @@ Describe "Get-UcUser" {
 		}		
 	}
 }
+
+Describe "Set-UcUser" {
+	Context "Username and associated devices" {
+		It "remove all devices from a known user" {
+			Set-UcUser "user01" -associateddevices @("") | select -ExpandProperty associateddevices | Should be $null
+		}
+		It "associate a known device with a known user" {
+			Set-UcUser "user01" -associateddevices @("CSFuser001") | select -ExpandProperty associateddevices | Should be "CSFUSER001"
+		}
+	} 
+}
