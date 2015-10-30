@@ -245,39 +245,39 @@ namespace Posh_UC
                         useDevicePoolCgpnTransformCss = template.useDevicePoolCgpnTransformCss,
                         geoLocationName = template.geoLocationName,
                         geoLocationFilterName = template.geoLocationFilterName,
-                        sendGeoLocation = template.sendGeoLocation,                        
-                        //lines = new XPhoneLines
-                        //{
-                        //    Items = new object[]
-                        //    {
-                        //        new XPhoneLine
-                        //        {
-                        //            index = "1",
-                        //            display = PhoneDisplay,
-                        //            dirn = new XDirn { pattern = DirectoryNumber, uuid = createdline.Value.line.uuid },
-                        //            ringSetting = phonelinetemplate.consecutiveRingSetting,
-                        //            consecutiveRingSetting = phonelinetemplate.consecutiveRingSetting,
-                        //            ringSettingIdlePickupAlert = phonelinetemplate.ringSettingIdlePickupAlert,
-                        //            ringSettingActivePickupAlert = phonelinetemplate.ringSettingActivePickupAlert,
-                        //            displayAscii = PhoneDisplay,
-                        //            e164Mask = phonelinetemplate.e164Mask,
-                        //            mwlPolicy = phonelinetemplate.mwlPolicy,
-                        //            maxNumCalls = phonelinetemplate.maxNumCalls,
-                        //            busyTrigger = phonelinetemplate.busyTrigger,
-                        //            //callInfoDisplay 
-                        //            //recordingProfileName
-                        //            //monitoringCssName
-                        //            recordingFlag = phonelinetemplate.recordingFlag,
-                        //            audibleMwi = phonelinetemplate.audibleMwi,
-                        //            speedDial = phonelinetemplate.speedDial,
-                        //            partitionUsage = phonelinetemplate.partitionUsage,
-                        //            //associatedEndusers
-                        //            missedCallLogging = phonelinetemplate.missedCallLogging,
-                        //            recordingMediaSource = phonelinetemplate.recordingMediaSource,
-                        //            //ctiid
-                        //        }
-                        //    }
-                        //},
+                        sendGeoLocation = template.sendGeoLocation,
+                        lines = new XPhoneLines
+                        {
+                            Items = new object[]
+                            {
+                                new XPhoneLine
+                                {
+                                    index = "1",
+                                    display = PhoneDisplay,
+                                    dirn = new XDirn { pattern = DirectoryNumber, uuid = createdline.Value.line.uuid },
+                                    ringSetting = phonelinetemplate.consecutiveRingSetting,
+                                    consecutiveRingSetting = phonelinetemplate.consecutiveRingSetting,
+                                    ringSettingIdlePickupAlert = phonelinetemplate.ringSettingIdlePickupAlert,
+                                    ringSettingActivePickupAlert = phonelinetemplate.ringSettingActivePickupAlert,
+                                    displayAscii = PhoneDisplay,
+                                    e164Mask = phonelinetemplate.e164Mask,
+                                    mwlPolicy = phonelinetemplate.mwlPolicy,
+                                    maxNumCalls = phonelinetemplate.maxNumCalls,
+                                    busyTrigger = phonelinetemplate.busyTrigger,
+                                    //callInfoDisplay 
+                                    //recordingProfileName
+                                    //monitoringCssName
+                                    recordingFlag = phonelinetemplate.recordingFlag,
+                                    audibleMwi = phonelinetemplate.audibleMwi,
+                                    speedDial = phonelinetemplate.speedDial,
+                                    partitionUsage = phonelinetemplate.partitionUsage,
+                                    //associatedEndusers
+                                    missedCallLogging = phonelinetemplate.missedCallLogging,
+                                    recordingMediaSource = phonelinetemplate.recordingMediaSource,
+                                    //ctiid
+                                }
+                            }                            
+                        },
                         phoneTemplateName = template.phoneTemplateName,
                         //speeddials = template.speeddials,
                         //busyLampFields = template.busyLampFields,
@@ -366,10 +366,13 @@ namespace Posh_UC
                         //ctiid
                     }
                 });
+                return res.@return;
             });
 
             if (result.Exception != null)
                 throw result.Exception;
+
+            Console.WriteLine(result.Value);
 
             Console.WriteLine("Associating user with phone");
 
