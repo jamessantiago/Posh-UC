@@ -65,7 +65,7 @@ namespace Posh_UC
             {
                 var res = client.getLine(new GetLineReq
                 {
-                    ItemsElementName = new ItemsChoiceType56[] { ItemsChoiceType56.pattern },
+                    ItemsElementName = new ItemsChoiceType57[] { ItemsChoiceType57.pattern },
                     Items = new object[] { DirectoryNumber }
                 });
                 return res.@return;
@@ -120,7 +120,7 @@ namespace Posh_UC
             {
                 var res = client.getLine(new GetLineReq
                 {
-                    ItemsElementName = new ItemsChoiceType56[] { ItemsChoiceType56.pattern },
+                    ItemsElementName = new ItemsChoiceType57[] { ItemsChoiceType57.pattern },
                     Items = new object[] { ((RPhoneLine)template.lines.Items[0]).dirn.pattern }
                 });
 
@@ -194,7 +194,7 @@ namespace Posh_UC
             {
                 var res = client.getLine(new GetLineReq
                 {
-                    ItemsElementName = new ItemsChoiceType56[] { ItemsChoiceType56.pattern },
+                    ItemsElementName = new ItemsChoiceType57[] { ItemsChoiceType57.pattern },
                     Items = new object[] { DirectoryNumber }
                 });
                 return res.@return;
