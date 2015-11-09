@@ -27,7 +27,15 @@ Describe "Get-UcPhone" {
 Describe "Add-UcPhone" {
 	Context "All of it" {
 		It "create a jabber phone for a known user" {
-			Add-UcPhone -TemplateDevice "CSFUSER001" -DeviceName "CSFUSERXX1" -DirectoryNumber "1111" -Description "User 01 Phone" -PhoneDisplay "User 01" -DirectoryUri "user01@domain.com" -Username "user01" | Should Not Throw
+			Add-UcPhone -TemplateDevice "CSFUSER001" -DeviceName "CSFUSERXX1" -DirectoryNumber "1111" -Description "User 01 Phone" -PhoneDisplay "User 01" -DirectoryUri "user01@domain.com" -Username "user01"
 		}		
+	}
+}
+
+Describe "Remove-UcPhone" {
+	Context "Previously created phone" {
+		It "removes a phone" {
+			Remove-UcPhone "CSFUSERXX1"
+		}
 	}
 }

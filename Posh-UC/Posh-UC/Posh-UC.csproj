@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="Phones.AddPhone.cs">
+      <DependentUpon>Phones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Phones.cs" />
     <Compile Include="SQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

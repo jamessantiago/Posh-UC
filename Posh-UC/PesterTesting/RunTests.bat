@@ -11,6 +11,6 @@ set ucUsername=administrator
 set ucPassword=ciscopsdt
 
 echo "Running tests"
-cmd /c ..\..\Pester\bin\pester.bat Phones*
+cmd /c ..\..\Pester\bin\pester.bat
 
 pause
