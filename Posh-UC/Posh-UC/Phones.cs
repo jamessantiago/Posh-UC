@@ -216,36 +216,36 @@ namespace Posh_UC
                         name = DeviceName,
                         description = Description,
                         product = template.product,
-                        @class = template.@class,
+                        @class = template.@class,                        
                         protocol = template.protocol,
                         protocolSide = template.protocolSide,
-                        callingSearchSpaceName = template.callingSearchSpaceName,
+                        //callingSearchSpaceName = template.callingSearchSpaceName,
                         devicePoolName = template.devicePoolName,
-                        commonDeviceConfigName = template.commonDeviceConfigName,
+                        //commonDeviceConfigName = template.commonDeviceConfigName,
                         commonPhoneConfigName = template.commonPhoneConfigName,
                         networkLocation = template.networkLocation,
                         locationName = template.locationName,
-                        mediaResourceListName = template.mediaResourceListName,
-                        //networkHoldMohAudioSourceId = 
+                        //mediaResourceListName = template.mediaResourceListName,
+                        //networkHoldMohAudioSourceId CISCO: not valid for h323phone
                         //userHoldMohAudioSourceId = 
-                        automatedAlternateRoutingCssName = template.automatedAlternateRoutingCssName,
-                        aarNeighborhoodName = template.aarNeighborhoodName,
-                        loadInformation = template.loadInformation,
-                        vendorConfig = template.vendorConfig,
-                        //versionStamp = Generate a GUID?
-                        traceFlag = template.traceFlag,
-                        //mlppDomainId = 
-                        mlppIndicationStatus = template.mlppIndicationStatus,
-                        preemption = template.preemption,
+                        //automatedAlternateRoutingCssName = template.automatedAlternateRoutingCssName,
+                        //aarNeighborhoodName = template.aarNeighborhoodName,
+                        //loadInformation = template.loadInformation,
+                        //vendorConfig = template.vendorConfig,
+                        //versionStamp CISCO: UUID changed each time device is updated
+                        //traceFlag = template.traceFlag,
+                        //mlppDomainId = "-1", //CISCO: This setting only effects devices that support MLPP, Use -1 to set to null
+                        //mlppIndicationStatus = template.mlppIndicationStatus,
+                        //preemption = template.preemption,
                         useTrustedRelayPoint = template.useTrustedRelayPoint,
                         retryVideoCallAsAudio = template.retryVideoCallAsAudio,
                         securityProfileName = template.securityProfileName,
                         sipProfileName = template.sipProfileName,
-                        cgpnTransformationCssName = template.cgpnTransformationCssName,
-                        useDevicePoolCgpnTransformCss = template.useDevicePoolCgpnTransformCss,
-                        geoLocationName = template.geoLocationName,
-                        geoLocationFilterName = template.geoLocationFilterName,
-                        sendGeoLocation = template.sendGeoLocation,
+                        //cgpnTransformationCssName = template.cgpnTransformationCssName,
+                        //useDevicePoolCgpnTransformCss = template.useDevicePoolCgpnTransformCss,
+                        //geoLocationName = template.geoLocationName,
+                        //geoLocationFilterName = template.geoLocationFilterName,
+                        //sendGeoLocation = template.sendGeoLocation,
                         lines = new XPhoneLines
                         {
                             Items = new object[]
@@ -257,8 +257,8 @@ namespace Posh_UC
                                     dirn = new XDirn { pattern = DirectoryNumber, uuid = createdline.Value.line.uuid },
                                     ringSetting = phonelinetemplate.consecutiveRingSetting,
                                     consecutiveRingSetting = phonelinetemplate.consecutiveRingSetting,
-                                    ringSettingIdlePickupAlert = phonelinetemplate.ringSettingIdlePickupAlert,
-                                    ringSettingActivePickupAlert = phonelinetemplate.ringSettingActivePickupAlert,
+                                    //ringSettingIdlePickupAlert = phonelinetemplate.ringSettingIdlePickupAlert,
+                                    //ringSettingActivePickupAlert = phonelinetemplate.ringSettingActivePickupAlert,
                                     displayAscii = PhoneDisplay,
                                     e164Mask = phonelinetemplate.e164Mask,
                                     mwlPolicy = phonelinetemplate.mwlPolicy,
@@ -269,7 +269,7 @@ namespace Posh_UC
                                     //monitoringCssName
                                     recordingFlag = phonelinetemplate.recordingFlag,
                                     audibleMwi = phonelinetemplate.audibleMwi,
-                                    speedDial = phonelinetemplate.speedDial,
+                                    //speedDial = phonelinetemplate.speedDial,
                                     partitionUsage = phonelinetemplate.partitionUsage,
                                     //associatedEndusers
                                     missedCallLogging = phonelinetemplate.missedCallLogging,
@@ -281,9 +281,9 @@ namespace Posh_UC
                         phoneTemplateName = template.phoneTemplateName,
                         //speeddials = template.speeddials,
                         //busyLampFields = template.busyLampFields,
-                        primaryPhoneName = template.primaryPhoneName,
-                        ringSettingIdleBlfAudibleAlert = template.ringSettingIdleBlfAudibleAlert,
-                        ringSettingBusyBlfAudibleAlert = template.ringSettingBusyBlfAudibleAlert,
+                        //primaryPhoneName = template.primaryPhoneName,
+                        //ringSettingIdleBlfAudibleAlert = template.ringSettingIdleBlfAudibleAlert,
+                        //ringSettingBusyBlfAudibleAlert = template.ringSettingBusyBlfAudibleAlert,
                         //blfDirectedCallParks = template.blfDirectedCallParks,
                         //addOnModules = template.addOnModules,
                         //userLocale = 
@@ -297,75 +297,75 @@ namespace Posh_UC
                         //proxyServerUrl
                         //servicesUrl
                         //services
-                        softkeyTemplateName = template.softkeyTemplateName,
-                        defaultProfileName = template.defaultProfileName,
-                        enableExtensionMobility = template.enableExtensionMobility,
-                        singleButtonBarge = template.singleButtonBarge,
-                        joinAcrossLines = template.joinAcrossLines,
+                        //softkeyTemplateName = template.softkeyTemplateName,
+                        //defaultProfileName = template.defaultProfileName,
+                        //enableExtensionMobility = template.enableExtensionMobility,
+                        //singleButtonBarge = template.singleButtonBarge,
+                        //joinAcrossLines = template.joinAcrossLines,
                         builtInBridgeStatus = template.builtInBridgeStatus,
-                        callInfoPrivacyStatus = template.callInfoPrivacyStatus,
-                        hlogStatus = template.hlogStatus,
+                        //callInfoPrivacyStatus = template.callInfoPrivacyStatus,
+                        //hlogStatus = template.hlogStatus,
                         //ownerUserName = generated from association?
-                        ignorePresentationIndicators = template.ignorePresentationIndicators,
+                        //ignorePresentationIndicators = template.ignorePresentationIndicators,
                         packetCaptureMode = template.packetCaptureMode,
-                        packetCaptureDuration = template.packetCaptureDuration,
-                        subscribeCallingSearchSpaceName = template.subscribeCallingSearchSpaceName,
-                        rerouteCallingSearchSpaceName = template.rerouteCallingSearchSpaceName,
-                        allowCtiControlFlag = template.allowCtiControlFlag,
-                        presenceGroupName = template.presenceGroupName,
-                        unattendedPort = template.unattendedPort,
-                        requireDtmfReception = template.requireDtmfReception,
-                        rfc2833Disabled = template.rfc2833Disabled,
-                        //certificateOperation = template.certificateOperation,
-                        authenticationMode = template.authenticationMode,
+                        //packetCaptureDuration = template.packetCaptureDuration,
+                        //subscribeCallingSearchSpaceName CISCO: support for this tag has been removed for IMS phone from 9.0
+                        //rerouteCallingSearchSpaceName = template.rerouteCallingSearchSpaceName,
+                        //allowCtiControlFlag = template.allowCtiControlFlag,
+                        //presenceGroupName = template.presenceGroupName,
+                        //unattendedPort = template.unattendedPort,
+                        //requireDtmfReception = template.requireDtmfReception,
+                        //rfc2833Disabled = template.rfc2833Disabled,
+                        certificateOperation = template.certificateOperation,
+                        //AuthenticationMode = template.authenticationMode,  CISCO: next fields can only be updated if certificate operation is install/upgrade, delete or troubleshoot
                         //keySize = template.keySize,
                         //authenticationString
                         //upgradeFinishTime
                         deviceMobilityMode = template.deviceMobilityMode,
-                        remoteDevice = template.remoteDevice,
-                        dndOption = template.dndOption,
-                        dndRingSetting = template.dndRingSetting,
-                        dndStatus = template.dndStatus,
-                        isActive = template.isActive,
-                        isDualMode = template.isDualMode,
-                        //mobilityUserIdName
-                        phoneSuite = template.phoneSuite,
-                        phoneServiceDisplay = template.phoneServiceDisplay,
-                        isProtected = template.isProtected,
-                        mtpRequired = template.mtpRequired,
-                        dialRulesName = template.dialRulesName,
-                        //sshUserId
-                        //sshPwd
-                        //digestUser
-                        outboundCallRollover = template.outboundCallRollover,
-                        hotlineDevice = template.hotlineDevice,
-                        secureInformationUrl = template.secureInformationUrl,
-                        secureDirectoryUrl = template.secureDirectoryUrl,
-                        secureMessageUrl = template.secureMessageUrl,
-                        secureServicesUrl = template.secureServicesUrl,
-                        secureAuthenticationUrl = template.secureAuthenticationUrl,
-                        secureIdleUrl = template.secureIdleUrl,
-                        alwaysUsePrimeLine = template.alwaysUsePrimeLine,
-                        alwaysUsePrimeLineForVoiceMessage = template.alwaysUsePrimeLineForVoiceMessage,
-                        featureControlPolicy = template.featureControlPolicy,
-                        deviceTrustMode = template.deviceTrustMode,
-                        earlyOfferSupportForVoiceCall = template.earlyOfferSupportForVoiceCall,
-                        requireThirdPartyRegistration = template.requireThirdPartyRegistration,                        
-                        blockIncomingCallsWhenRoaming = template.blockIncomingCallsWhenRoaming,
-                        homeNetworkId = template.homeNetworkId,
-                        AllowPresentationSharingUsingBfcp = template.AllowPresentationSharingUsingBfcp,
+                        //remoteDevice = template.remoteDevice,
+                        //dndOption = template.dndOption,
+                        //dndRingSetting = template.dndRingSetting,
+                        //dndStatus = template.dndStatus,
+                        //isActive = template.isActive,
+                        //isDualMode = template.isDualMode,
+                        mobilityUserIdName = new XFkType(),
+                        //phoneSuite = template.phoneSuite,
+                        //phoneServiceDisplay = template.phoneServiceDisplay,
+                        //isProtected = template.isProtected,
+                        //mtpRequired = template.mtpRequired,
+                        //dialRulesName = template.dialRulesName,
+                        ////sshUserId
+                        ////sshPwd
+                        ////digestUser
+                        //outboundCallRollover = template.outboundCallRollover,
+                        //hotlineDevice = template.hotlineDevice,
+                        //secureInformationUrl = template.secureInformationUrl,
+                        //secureDirectoryUrl = template.secureDirectoryUrl,
+                        //secureMessageUrl = template.secureMessageUrl,
+                        //secureServicesUrl = template.secureServicesUrl,
+                        //secureAuthenticationUrl = template.secureAuthenticationUrl,
+                        //secureIdleUrl = template.secureIdleUrl,
+                        //alwaysUsePrimeLine = template.alwaysUsePrimeLine,
+                        //alwaysUsePrimeLineForVoiceMessage = template.alwaysUsePrimeLineForVoiceMessage,
+                        //featureControlPolicy = template.featureControlPolicy,
+                        //deviceTrustMode = template.deviceTrustMode,
+                        //earlyOfferSupportForVoiceCall = template.earlyOfferSupportForVoiceCall,
+                        //requireThirdPartyRegistration = template.requireThirdPartyRegistration,                        
+                        //blockIncomingCallsWhenRoaming = template.blockIncomingCallsWhenRoaming,
+                        //homeNetworkId = template.homeNetworkId,
+                        //AllowPresentationSharingUsingBfcp = template.AllowPresentationSharingUsingBfcp,
                         //confidentialAccess = template.confidentialAccess
-                        requireOffPremiseLocation = template.requireOffPremiseLocation,
-                        allowiXApplicableMedia = template.allowiXApplicableMedia,
-                        cgpnIngressDN = template.cgpnIngressDN,
-                        useDevicePoolCgpnIngressDN = template.useDevicePoolCgpnIngressDN,
+                        //requireOffPremiseLocation = template.requireOffPremiseLocation,
+                        //allowiXApplicableMedia = template.allowiXApplicableMedia,
+                        //cgpnIngressDN = template.cgpnIngressDN,
+                        //useDevicePoolCgpnIngressDN = template.useDevicePoolCgpnIngressDN,
                         //msisdn
-                        enableCallRoutingToRdWhenNoneIsActive = template.enableCallRoutingToRdWhenNoneIsActive,
-                        wifiHotspotProfile = template.wifiHotspotProfile,
-                        wirelessLanProfileGroup = template.wirelessLanProfileGroup
+                        //enableCallRoutingToRdWhenNoneIsActive = template.enableCallRoutingToRdWhenNoneIsActive,
+                        //wifiHotspotProfile = template.wifiHotspotProfile,
+                        //wirelessLanProfileGroup = template.wirelessLanProfileGroup
                         //ctiid
                     }
-                });
+                });                
                 return res.@return;
             });
 
