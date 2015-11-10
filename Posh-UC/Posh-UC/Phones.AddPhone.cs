@@ -237,7 +237,7 @@ namespace Posh_UC
                         builtInBridgeStatus = template.builtInBridgeStatus,
                         //callInfoPrivacyStatus = template.callInfoPrivacyStatus,
                         //hlogStatus = template.hlogStatus,
-                        //ownerUserName = generated from association?
+                        ownerUserName = new XFkType() { Value = Username },
                         //ignorePresentationIndicators = template.ignorePresentationIndicators,
                         packetCaptureMode = template.packetCaptureMode,
                         //packetCaptureDuration = template.packetCaptureDuration,
