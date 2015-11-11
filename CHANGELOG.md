@@ -1,3 +1,19 @@
+0.1.1
+-----
+Released 12-Nov-15
+
+New
+===
+
+- Add-UcPhone
+- Remove-UcPhone
+- New version of UC.NET
+
+Fixes
+=====
+
+- Refactoring of cmdlet classes
+
 0.1
 ---
 Released 28-Oct-15
@@ -16,5 +32,3 @@ Fixes
 
  - Corrected formatting of SQl output
  - Connection doesn't reoccure now when rerunning Connect-UcServer, use -Force to reconnect
-
-
