@@ -22,3 +22,5 @@ Connect to a CUCM server using an account with the AXL API role:
 Execute SQL command
 
     Invoke-UcSqlCmd "select * from device where name = 'jabberjrs'"
+
+See the [Pester Testing] files for more examples or run `Get-Help [Command] -Full` for details on a specific command.
