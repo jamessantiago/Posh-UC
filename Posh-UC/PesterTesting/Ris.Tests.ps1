@@ -26,7 +26,7 @@ Describe "Get-UcCmDevice" {
 	}
 	Context "no parameter" {
 		It "get all cm devices" {
-			Get-UcCmDevice | Should Not BeNullOrEmpty
+			$(Get-UcCmDevice).TotalDevicesFound -gt 0 | Should Be $true
 		}		
 	}
 }
@@ -34,12 +34,17 @@ Describe "Get-UcCmDevice" {
 Describe "Get-UcCtiItem" {
 	Context "DeviceName" {
 		It "get a cti device" {
-			Get-UcCtiItem -DeviceName CSFUSER001 | Should Not BeNullOrEmpty
+			$(Get-UcCtiItem -DeviceName CSFUSER001).TotalItemsFound -gt 0 | Should Be $true
 		}
 	}
 	Context "DirectoryNumber" {
 		It "get a cti device by number" {
-			Get-UcCtiItem -DirectoryNumber 1001 | Should Not BeNullOrEmpty
+			$(Get-UcCtiItem -DirectoryNumber 1001).TotalItemsFound -gt 0 | Should Be $true
+		}
+	}
+	Context "no parameter" {
+		It "get all cti devices" {
+			$(Get-UcCtiItem).TotalItemsFound -gt 0 | Should Be $true
 		}
 	}
 }

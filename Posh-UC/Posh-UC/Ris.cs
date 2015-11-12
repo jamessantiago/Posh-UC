@@ -27,7 +27,7 @@ namespace Posh_UC
         {
             var device = CurrentUcClient.Instance.RisClient.Execute(client =>
             {
-                var res = client.selectCmDeviceExt(string.Empty, new CmSelectionCriteria
+                var res = client.selectCmDevice(string.Empty, new CmSelectionCriteria
                 {
                     MaxReturnedDevices = 1000,
                     DeviceClass = "Any",
@@ -36,7 +36,7 @@ namespace Posh_UC
                     NodeName = string.Empty, //null for all nodes
                     SelectBy = CmSelectBy.Name,
                     SelectItems = DeviceName != null ? new ArrayOfSelectItem() { new SelectItem() { Item = DeviceName } } :
-                    new ArrayOfSelectItem() {new SelectItem() },
+                    new ArrayOfSelectItem() { new SelectItem() { Item = "*" } },
                     Protocol = ProtocolType.Any,
                     DownloadStatus = DeviceDownloadStatus.Any,
                 });
@@ -80,8 +80,8 @@ namespace Posh_UC
                     CtiMgrClass = CtiMgrClass.Line,
                     Status = CtiStatus.Any,
                     NodeName = string.Empty,
-                    SelectAppBy = CtiSelectAppBy.AppId,
-                    AppItems = new ArrayOfSelectAppItem(),
+                    SelectAppBy = CtiSelectAppBy.UserId,
+                    AppItems = new ArrayOfSelectAppItem() { new SelectAppItem() { AppItem = "*" } },
                     DevNames = DeviceName != null ? new ArrayOfSelectDevName() { new SelectDevName() { DevName = DeviceName } } :
                     new ArrayOfSelectDevName(),
                     DirNumbers = DirectoryNumber != null ? new ArrayOfSelectDirNumber() { new SelectDirNumber() { DirNumber = DirectoryNumber} } :
