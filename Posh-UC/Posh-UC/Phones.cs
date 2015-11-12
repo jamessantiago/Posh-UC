@@ -16,7 +16,7 @@ namespace Posh_UC
     {
         protected override void BeginProcessing()
         {
-            if (!CurrentAxlClient.Instance.Loaded)
+            if (!CurrentUcClient.Instance.Loaded)
             {
                 throw new ClientNotLoadedException();
             }
@@ -24,7 +24,7 @@ namespace Posh_UC
 
         protected override void ProcessRecord()
         {
-            var phone = CurrentAxlClient.Instance.Client.Execute(client =>
+            var phone = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.getPhone(new GetPhoneReq
                 {
@@ -53,7 +53,7 @@ namespace Posh_UC
     {
         protected override void BeginProcessing()
         {
-            if (!CurrentAxlClient.Instance.Loaded)
+            if (!CurrentUcClient.Instance.Loaded)
             {
                 throw new ClientNotLoadedException();
             }
@@ -63,7 +63,7 @@ namespace Posh_UC
         {
             if (!KeepLines.IsPresent)
             { 
-                var phone = CurrentAxlClient.Instance.Client.Execute(client =>
+                var phone = CurrentUcClient.Instance.Client.Execute(client =>
                 {
                     var res = client.getPhone(new GetPhoneReq
                     {
@@ -76,7 +76,7 @@ namespace Posh_UC
                     throw phone.Exception;
 
                 
-                var removedLineResult = CurrentAxlClient.Instance.Client.Execute(client =>
+                var removedLineResult = CurrentUcClient.Instance.Client.Execute(client =>
                 {
                     var res = client.removeLine(new RemoveLineReq
                     {
@@ -90,7 +90,7 @@ namespace Posh_UC
                     throw removedLineResult.Exception;
             }
 
-            var removedResult = CurrentAxlClient.Instance.Client.Execute(client =>
+            var removedResult = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.removePhone(new NameAndGUIDRequest
                 {
@@ -126,7 +126,7 @@ namespace Posh_UC
     {
         protected override void BeginProcessing()
         {
-            if (!CurrentAxlClient.Instance.Loaded)
+            if (!CurrentUcClient.Instance.Loaded)
             {
                 throw new ClientNotLoadedException();
             }
@@ -134,7 +134,7 @@ namespace Posh_UC
 
         protected override void ProcessRecord()
         {
-            var line = CurrentAxlClient.Instance.Client.Execute(client =>
+            var line = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.getLine(new GetLineReq
                 {

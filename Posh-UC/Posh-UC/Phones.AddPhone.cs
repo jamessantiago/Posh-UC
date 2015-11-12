@@ -20,7 +20,7 @@ namespace Posh_UC
 
         protected override void BeginProcessing()
         {
-            if (!CurrentAxlClient.Instance.Loaded)
+            if (!CurrentUcClient.Instance.Loaded)
             {
                 throw new ClientNotLoadedException();
             }
@@ -30,7 +30,7 @@ namespace Posh_UC
         {
             Console.WriteLine("Retrieving phone template");
 
-            var phone = CurrentAxlClient.Instance.Client.Execute(client =>
+            var phone = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.getPhone(new GetPhoneReq
                 {
@@ -46,7 +46,7 @@ namespace Posh_UC
 
             Console.WriteLine("Retrieving line template");
 
-            var lineresult = CurrentAxlClient.Instance.Client.Execute(client =>
+            var lineresult = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.getLine(new GetLineReq
                 {
@@ -64,7 +64,7 @@ namespace Posh_UC
 
             Console.WriteLine("Creating line");
 
-            var newlineresult = CurrentAxlClient.Instance.Client.Execute(client =>
+            var newlineresult = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.addLine(new AddLineReq
                 {
@@ -120,7 +120,7 @@ namespace Posh_UC
             if (newlineresult.Exception != null)
                 throw newlineresult.Exception;
 
-            var createdline = CurrentAxlClient.Instance.Client.Execute(client =>
+            var createdline = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.getLine(new GetLineReq
                 {
@@ -139,7 +139,7 @@ namespace Posh_UC
 
             var phonelinetemplate = (RPhoneLine)template.lines.Items[0];
 
-            var result = CurrentAxlClient.Instance.Client.Execute(client =>
+            var result = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.addPhone(new AddPhoneReq
                 {
@@ -308,7 +308,7 @@ namespace Posh_UC
 
             Console.WriteLine("Associating user with phone");
 
-            var associationresult = CurrentAxlClient.Instance.Client.Execute(client =>
+            var associationresult = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.updateUser(new UpdateUserReq
                 {
@@ -332,7 +332,7 @@ namespace Posh_UC
                 {
                     Console.WriteLine("Removing line after failure");
 
-                    var lineRemoval = CurrentAxlClient.Instance.Client.Execute(client =>
+                    var lineRemoval = CurrentUcClient.Instance.Client.Execute(client =>
                     {
                         var res = client.removeLine(new RemoveLineReq
                         {
@@ -349,7 +349,7 @@ namespace Posh_UC
                 {
                     Console.WriteLine("Removing phone after failure");
 
-                    var phoneRemoval = CurrentAxlClient.Instance.Client.Execute(client =>
+                    var phoneRemoval = CurrentUcClient.Instance.Client.Execute(client =>
                     {
                         var res = client.removePhone(new NameAndGUIDRequest
                         {

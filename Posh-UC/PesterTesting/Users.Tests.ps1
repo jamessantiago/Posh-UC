@@ -18,7 +18,9 @@ if (-not (Get-Module Posh-UC))
 Describe "Get-UcUser" {
 	Context "Username" {
 		It "get a regular user" {
-			Connect-UcServer $env:ucServer $env:ucUsername $env:ucPassword | Should Be $true
+			$pass = ConvertTo-SecureString $env:ucPassword -AsPlainText -Force
+			$creds = New-Object system.management.automation.PSCredential($env:ucUsername, $pass)
+			Connect-UcServer $env:ucServer $creds -DoNotVerify | Should Be $true
 			Get-UcUser user01 | Should Not BeNullOrEmpty
 		}		
 	}

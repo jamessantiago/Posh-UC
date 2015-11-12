@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="Phones.Tests.ps1" />
     <Compile Include="Sql.Tests.ps1" />
+    <Compile Include="Ris.Tests.ps1" />
     <Compile Include="Users.Tests.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

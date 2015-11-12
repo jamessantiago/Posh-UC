@@ -1,3 +1,17 @@
+0.1.2
+-----
+Released 12-Nov-15
+
+New
+===
+ - Get-UcCmDevice
+ - Get-UcCtiDevice
+ - Added RisClient from updated UC.NET library for above two commands
+
+Changed
+=======
+ - Changed Connect-UcServer command to request a credential object instead of username and password plaintext
+
 0.1.1
 -----
 Released 12-Nov-15

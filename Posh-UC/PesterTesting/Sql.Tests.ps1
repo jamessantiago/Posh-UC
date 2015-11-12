@@ -18,7 +18,9 @@
 Describe "Invoke-UcSqlCmd" {
 	Context "Sql Command" {
 		It "grabs a count of devices" {
-			Connect-UcServer $env:ucServer $env:ucUsername $env:ucPassword | Should Be $true
+			$pass = ConvertTo-SecureString $env:ucPassword -AsPlainText -Force
+			$creds = New-Object system.management.automation.PSCredential($env:ucUsername, $pass)
+			Connect-UcServer $env:ucServer $creds -DoNotVerify | Should Be $true
 			Invoke-UcSqlCmd "select count(*) from device" | Should Not BeNullOrEmpty
 		}		
 	}

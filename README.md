@@ -17,7 +17,7 @@ Get all Posh-UC commands:
 
 Connect to a CUCM server using an account with the AXL API role:
 
-    Connect-UcServer "CUCMServer01" "username" "password"
+    Connect-UcServer "CUCMServer01" $(Get-Credential)
 
 Execute SQL command
 

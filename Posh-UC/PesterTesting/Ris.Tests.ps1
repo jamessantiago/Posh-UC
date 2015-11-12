@@ -11,33 +11,35 @@ if (-not (Get-Module Posh-UC))
 
 ################################################
 #
-#        Phone Commands via AXL
+#        User Commands via AXL
 #
 ################################################
 
-Describe "Get-UcPhone" {
+Describe "Get-UcCmDevice" {
 	Context "DeviceName" {
-		It "get a device by name" {
+		It "get a cm device" {
 			$pass = ConvertTo-SecureString $env:ucPassword -AsPlainText -Force
 			$creds = New-Object system.management.automation.PSCredential($env:ucUsername, $pass)
 			Connect-UcServer $env:ucServer $creds -DoNotVerify | Should Be $true
-			Get-UcPhone csfuser001 | Should Not BeNullOrEmpty
+			Get-UcCmDevice SIPTrunkToCUP | Should Not BeNullOrEmpty
+		}
+	}
+	Context "no parameter" {
+		It "get all cm devices" {
+			Get-UcCmDevice | Should Not BeNullOrEmpty
 		}		
 	}
 }
 
-Describe "Add-UcPhone" {
-	Context "All of it" {
-		It "create a jabber phone for a known user" {
-			Add-UcPhone -TemplateDevice "CSFUSER001" -DeviceName "CSFUSERXX1" -DirectoryNumber "1111" -Description "User 01 Phone" -PhoneDisplay "User 01" -DirectoryUri "user01@domain.com" -Username "user01"
-		}		
+Describe "Get-UcCtiItem" {
+	Context "DeviceName" {
+		It "get a cti device" {
+			Get-UcCtiItem -DeviceName CSFUSER001 | Should Not BeNullOrEmpty
+		}
 	}
-}
-
-Describe "Remove-UcPhone" {
-	Context "Previously created phone" {
-		It "removes a phone" {
-			Remove-UcPhone "CSFUSERXX1"
+	Context "DirectoryNumber" {
+		It "get a cti device by number" {
+			Get-UcCtiItem -DirectoryNumber 1001 | Should Not BeNullOrEmpty
 		}
 	}
 }

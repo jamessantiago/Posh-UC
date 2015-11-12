@@ -5,22 +5,23 @@ using System.Text;
 using System.Management.Automation;
 using System.IO;
 using AxlNetClient;
-
+using RisNetClient;
+using UcNetClient;
 
 namespace Posh_UC
 {
 
-    public sealed class CurrentAxlClient
+    public sealed class CurrentUcClient
     {
-        private static volatile CurrentAxlClient instance;
+        private static volatile CurrentUcClient instance;
         private static object syncRoot = new object();
 
-        private CurrentAxlClient()
+        private CurrentUcClient()
         {
             Loaded = false;
         }
 
-        public static CurrentAxlClient Instance
+        public static CurrentUcClient Instance
         {
             get
             {
@@ -29,7 +30,7 @@ namespace Posh_UC
                     lock (syncRoot)
                     {
                         if (instance == null)
-                            instance = new CurrentAxlClient();
+                            instance = new CurrentUcClient();
                     }
                 }
                 return instance;
@@ -38,29 +39,42 @@ namespace Posh_UC
 
         public bool Loaded { get; private set; }
         public AxlClient Client { get; private set; }
+        public RisClient RisClient { get; private set; }
 
-        public void Connect(string Server, string Username, string Password)
+        public void Connect(string Server, string Username, string Password, bool verify = true)
         {
             Loaded = false;
-            var tempClient = new AxlClient(new AxlClientSettings
+            var settings = new UcClientSettings
             {
                 Server = Server,
                 User = Username,
                 Password = Password
-            });
-            var testResults = tempClient.Execute(client =>
+            };
+            if (verify)
             {
-                var res = client.getAppUser(new GetAppUserReq
+                var tempClient = new AxlClient(settings);
+                var testResults = tempClient.Execute(client =>
                 {
-                    ItemElementName = ItemChoiceType102.userid,
-                    Item = Username
+                    var res = client.getAppUser(new GetAppUserReq
+                    {
+                        ItemElementName = ItemChoiceType102.userid,
+                        Item = Username
+                    });
                 });
-            });
-            if (testResults.Exception != null)
-                throw testResults.Exception;
+
+                if (testResults.Exception != null)
+                    throw testResults.Exception;
+                else
+                {
+                    Client = tempClient;
+                    RisClient = new RisClient(settings);
+                    Loaded = true;
+                }
+            }            
             else
             {
-                Client = tempClient;
+                Client = new AxlClient(settings);
+                RisClient = new RisClient(settings);
                 Loaded = true;
             }
             
@@ -81,58 +95,55 @@ namespace Posh_UC
     {
         protected override void ProcessRecord()
         {
-            if (!CurrentAxlClient.Instance.Loaded || Force)
+            if (!CurrentUcClient.Instance.Loaded || Force)
             {
                 Exception failure = null;
-                try { CurrentAxlClient.Instance.Connect(Server, Username, Password); }
+                
+                try { CurrentUcClient.Instance.Connect(Server, Credential.UserName, 
+                    Credential.Password.ConvertToUnsecureString(), !DoNotVerify.IsPresent); }
                 catch (Exception ex) { failure = ex; }
 
-                WriteObject(CurrentAxlClient.Instance.Loaded);
+                WriteObject(CurrentUcClient.Instance.Loaded);
                 if (failure != null)
                 {
                     Console.WriteLine(string.Format("Failed to connect: {0}", failure.Message));
                 }
             } else
             {
-                WriteObject(CurrentAxlClient.Instance.Loaded);
+                WriteObject(CurrentUcClient.Instance.Loaded);
                 Console.WriteLine("The AXL client is already loaded.  Use the -Force switch to reconnect");
             }
         }
 
         [Parameter(
-            ParameterSetName = "String",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "AXL UC server to run the sql command against")]
+            HelpMessage = "UC server")]
         public string Server;
-
+        
         [Parameter(
-            ParameterSetName = "String",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 1,
-            HelpMessage = "AXL username to connect with")]
-        public string Username;
+            HelpMessage = "UC credentials to connect with")]
+        public PSCredential Credential;
 
         [Parameter(
-            ParameterSetName = "String",
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true,
             Position = 2,
-            HelpMessage = "AXL password to connect with")]
-        public string Password;
+            HelpMessage = "Force to connect even if the client is already loaded")]
+        public SwitchParameter Force;
 
         [Parameter(
-            ParameterSetName = "Byte",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
-            HelpMessage = "Force to connect even if the AXL client is already loaded")]
-        public SwitchParameter Force;
+            HelpMessage = "Skip connection verification")]
+        public SwitchParameter DoNotVerify;
     }
 
     [Cmdlet(VerbsCommunications.Disconnect, "UcServer")]
@@ -140,8 +151,8 @@ namespace Posh_UC
     {
         protected override void ProcessRecord()
         {
-            CurrentAxlClient.Instance.Disconnect();
-            WriteObject("Successfully disconnected the AXL client");
+            CurrentUcClient.Instance.Disconnect();
+            WriteObject("Successfully disconnected the client");
         }
     }
 

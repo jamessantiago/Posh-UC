@@ -15,7 +15,7 @@ namespace Posh_UC
     {
         protected override void BeginProcessing()
         {
-            if (!CurrentAxlClient.Instance.Loaded)
+            if (!CurrentUcClient.Instance.Loaded)
             {
                 throw new ClientNotLoadedException(); 
             }
@@ -23,7 +23,7 @@ namespace Posh_UC
 
         protected override void ProcessRecord()
         {
-            var data = CurrentAxlClient.Instance.Client.Execute(client =>
+            var data = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.executeSQLQuery(new ExecuteSQLQueryReq
                 {

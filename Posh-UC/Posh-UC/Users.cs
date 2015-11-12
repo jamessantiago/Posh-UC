@@ -14,7 +14,7 @@ namespace Posh_UC
     {
         protected override void BeginProcessing()
         {
-            if (!CurrentAxlClient.Instance.Loaded)
+            if (!CurrentUcClient.Instance.Loaded)
             {
                 throw new ClientNotLoadedException();
             }
@@ -22,7 +22,7 @@ namespace Posh_UC
 
         protected override void ProcessRecord()
         {
-            var user = CurrentAxlClient.Instance.Client.Execute(client =>
+            var user = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.getUser(new GetUserReq
                 {
@@ -52,7 +52,7 @@ namespace Posh_UC
     {
         protected override void BeginProcessing()
         {
-            if (!CurrentAxlClient.Instance.Loaded)
+            if (!CurrentUcClient.Instance.Loaded)
             {
                 throw new ClientNotLoadedException();
             }
@@ -60,7 +60,7 @@ namespace Posh_UC
 
         protected override void ProcessRecord()
         {
-            var result = CurrentAxlClient.Instance.Client.Execute(client =>
+            var result = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var updateRequest = new UpdateUserReq
                 {
@@ -84,7 +84,7 @@ namespace Posh_UC
             });
                       
                         
-            var user = CurrentAxlClient.Instance.Client.Execute(client =>
+            var user = CurrentUcClient.Instance.Client.Execute(client =>
             {
                 var res = client.getUser(new GetUserReq
                 {
