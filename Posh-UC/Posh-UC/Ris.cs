@@ -81,7 +81,7 @@ namespace Posh_UC
                     Status = CtiStatus.Any,
                     NodeName = string.Empty,
                     SelectAppBy = CtiSelectAppBy.UserId,
-                    AppItems = new ArrayOfSelectAppItem() { new SelectAppItem() { AppItem = "*" } },
+                    AppItems = new ArrayOfSelectAppItem() { new SelectAppItem() { AppItem = "administrator" } },
                     DevNames = DeviceName != null ? new ArrayOfSelectDevName() { new SelectDevName() { DevName = DeviceName } } :
                     new ArrayOfSelectDevName(),
                     DirNumbers = DirectoryNumber != null ? new ArrayOfSelectDirNumber() { new SelectDirNumber() { DirNumber = DirectoryNumber} } :
