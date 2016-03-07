@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Phones.Tests.ps1" />
+    <Compile Include="PerfMon.Tests.ps1" />
     <Compile Include="Sql.Tests.ps1" />
     <Compile Include="Ris.Tests.ps1" />
     <Compile Include="Users.Tests.ps1" />

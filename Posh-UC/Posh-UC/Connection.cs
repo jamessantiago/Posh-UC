@@ -6,6 +6,7 @@ using System.Management.Automation;
 using System.IO;
 using AxlNetClient;
 using RisNetClient;
+using PerfNetClient;
 using UcNetClient;
 
 namespace Posh_UC
@@ -39,7 +40,8 @@ namespace Posh_UC
 
         public bool Loaded { get; private set; }
         public AxlClient Client { get; private set; }
-        public RisClient RisClient { get; private set; }
+        public RisClient RisClient { get; private set; }  
+        public PerfClient PerfClient { get; private set; }    
 
         public void Connect(string Server, string Username, string Password, bool verify = true)
         {
@@ -68,6 +70,7 @@ namespace Posh_UC
                 {
                     Client = tempClient;
                     RisClient = new RisClient(settings);
+                    PerfClient = new PerfClient(settings);
                     Loaded = true;
                 }
             }            
@@ -75,6 +78,7 @@ namespace Posh_UC
             {
                 Client = new AxlClient(settings);
                 RisClient = new RisClient(settings);
+                PerfClient = new PerfClient(settings);
                 Loaded = true;
             }
             

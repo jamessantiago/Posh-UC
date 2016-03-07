@@ -34,9 +34,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\GeneratedAxl_10_5.dll</HintPath>
     </Reference>
+    <Reference Include="GeneratedPerf_10_5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\GeneratedPerf_10_5.dll</HintPath>
+    </Reference>
     <Reference Include="GeneratedRis_10_5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\GeneratedRis_10_5.dll</HintPath>
+    </Reference>
+    <Reference Include="GeneratedWebexXml_5_8, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\GeneratedWebexXml_5_8.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +73,7 @@
     <Compile Include="Extensions.Axl.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="PerfMon.cs" />
     <Compile Include="Phones.AddPhone.cs">
       <DependentUpon>Phones.cs</DependentUpon>
     </Compile>
@@ -73,8 +86,14 @@
   <ItemGroup>
     <Content Include="Lib\GeneratedAxl_10_5.dll" />
     <Content Include="Lib\GeneratedAxl_10_5.pdb" />
+    <Content Include="Lib\GeneratedPerf_10_5.dll" />
+    <Content Include="Lib\GeneratedPerf_10_5.pdb" />
     <Content Include="Lib\GeneratedRis_10_5.dll" />
     <Content Include="Lib\GeneratedRis_10_5.pdb" />
+    <Content Include="Lib\GeneratedWebexXml_5_8.dll" />
+    <Content Include="Lib\GeneratedWebexXml_5_8.pdb" />
+    <Content Include="Lib\Newtonsoft.Json.dll" />
+    <Content Include="Lib\Newtonsoft.Json.xml" />
     <Content Include="Lib\UcClient.dll" />
     <Content Include="Lib\UcClient.pdb" />
   </ItemGroup>
