@@ -32,17 +32,17 @@
   <ItemGroup>
     <Reference Include="GeneratedAxl_10_5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\GeneratedAxl_10_5.dll</HintPath>
+      <HintPath>..\..\..\UC.NET\UC.NET\UcClient\bin\Release\GeneratedAxl_10_5.dll</HintPath>
     </Reference>
-    <Reference Include="GeneratedPerf_10_5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="GeneratedPerf_10_5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e4d7c607d306df33, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\GeneratedPerf_10_5.dll</HintPath>
     </Reference>
-    <Reference Include="GeneratedRis_10_5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="GeneratedRis_10_5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e4d7c607d306df33, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\GeneratedRis_10_5.dll</HintPath>
+      <HintPath>..\..\..\UC.NET\UC.NET\UcClient\bin\Release\GeneratedRis_10_5.dll</HintPath>
     </Reference>
-    <Reference Include="GeneratedWebexXml_5_8, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="GeneratedWebexXml_5_8, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e4d7c607d306df33, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\GeneratedWebexXml_5_8.dll</HintPath>
     </Reference>
@@ -66,10 +66,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="UcClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\UcClient.dll</HintPath>
+      <HintPath>..\..\..\UC.NET\UC.NET\UcClient\bin\Release\UcClient.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WebexConnection.cs" />
     <Compile Include="Extensions.Axl.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Extensions.cs" />
@@ -82,6 +83,8 @@
     <Compile Include="SQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users.cs" />
+    <Compile Include="WebexMeetings.cs" />
+    <Compile Include="WebexUsers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\GeneratedAxl_10_5.dll" />
@@ -95,6 +98,7 @@
     <Content Include="Lib\Newtonsoft.Json.dll" />
     <Content Include="Lib\Newtonsoft.Json.xml" />
     <Content Include="Lib\UcClient.dll" />
+    <Content Include="Lib\UcClient.instr.pdb" />
     <Content Include="Lib\UcClient.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

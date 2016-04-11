@@ -115,7 +115,7 @@ namespace Posh_UC
             } else
             {
                 WriteObject(CurrentUcClient.Instance.Loaded);
-                Console.WriteLine("The AXL client is already loaded.  Use the -Force switch to reconnect");
+                Console.WriteLine("The AXL/Ris/Perf client is already loaded.  Use the -Force switch to reconnect");
             }
         }
 

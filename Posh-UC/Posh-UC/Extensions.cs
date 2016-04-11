@@ -26,5 +26,31 @@ namespace Posh_UC
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
             }
         }
+
+        public static bool IsNullOrEmpty(this string s)
+        {
+            return string.IsNullOrEmpty(s);
+        }
+
+        public static bool HasValue(this string s)
+        {
+            return !string.IsNullOrEmpty(s);
+        }
+
+        public static string IsNullOrEmptyReturn(this string s, params string[] otherPossibleResults)
+        {
+            if (s.HasValue())
+                return s;
+
+            if (otherPossibleResults == null)
+                return "";
+
+            foreach (var t in otherPossibleResults)
+            {
+                if (t.HasValue())
+                    return t;
+            }
+            return "";
+        }
     }
 }

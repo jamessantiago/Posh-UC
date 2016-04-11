@@ -10,7 +10,14 @@ set ucServer=10.10.20.1
 set ucUsername=administrator
 set ucPassword=ciscopsdt
 
+set webexServer=apidemoeu.webex.com
+set webexId=690319
+set webexPartner=g0webx!
+set webexUser=TestConfId
+set webexPassword=password
+set webexEmail=test.user2@email.domain
+
 echo "Running tests"
-cmd /c ..\..\Pester\bin\pester.bat Perf*
+cmd /c ..\..\Pester\bin\pester.bat *Webex*
 
 pause
