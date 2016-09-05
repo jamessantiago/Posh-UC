@@ -41,3 +41,21 @@ Describe "Remove-UcPhone" {
 		}
 	}
 }
+
+Describe "Set-UcLine" {
+	Context "Sets Directory URI and Alerting Name" {
+		It "Sets both" {
+			Set-UcLine -DirectoryNumber 1001 -PrimaryDirectoryUri "myuser@user.com" -AlertingName "Mr User"
+			Get-UcLine 1001 | Select -ExpandProperty DirectoryUris | Select -ExpandProperty uri | Should Be "myuser@user.com"
+			Get-UcLine 1001 | Select -ExpandProperty alertingName | Should Be "Mr User"
+		}
+		It "Sets Directory Uri" {
+			Set-UcLine -DirectoryNumber 1001 -PrimaryDirectoryUri "myuser@user.com"
+			Get-UcLine 1001 | Select -ExpandProperty DirectoryUris | Select -ExpandProperty uri | Should Be "myuser@user.com"
+		}
+		It "Sets Directory Alerting Name" {
+			Set-UcLine -DirectoryNumber 1001 -AlertingName "Mr User"
+			Get-UcLine 1001 | Select -ExpandProperty alertingName | Should Be "Mr User"
+		}
+	}
+}

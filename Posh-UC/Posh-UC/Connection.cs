@@ -87,6 +87,8 @@ namespace Posh_UC
         public void Disconnect()
         {
             Client = null;
+            RisClient = null;
+            PerfClient = null;
             Loaded = false;
         }
 

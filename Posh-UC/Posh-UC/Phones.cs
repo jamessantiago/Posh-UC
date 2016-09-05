@@ -154,9 +154,71 @@ namespace Posh_UC
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "DeviceName to retrieve")]
+            HelpMessage = "DirectoryNumber to retrieve")]
         public string DirectoryNumber;
     }
 
-        
+    [Cmdlet(VerbsCommon.Set, "UcLine")]
+    public class SetUcLine : PSCmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            if (!CurrentUcClient.Instance.Loaded)
+            {
+                throw new ClientNotLoadedException();
+            }
+        }
+
+        protected override void ProcessRecord()
+        {
+            var line = CurrentUcClient.Instance.Client.Execute(client =>
+            {
+                var req = new UpdateLineReq();
+
+                req.ItemsElementName = new ItemsChoiceType14[] { ItemsChoiceType14.pattern };
+                req.Items = new object[] { DirectoryNumber };
+                if (PrimaryDirectoryUri.HasValue())
+                {
+                    req.directoryURIs = new XDirectoryUri[]
+                    {
+                        new XDirectoryUri
+                        {
+                            advertiseGloballyViaIls = "t",
+                            isPrimary = "t",
+                            uri = PrimaryDirectoryUri,
+                            partition = new XFkType()
+                        }
+                    };
+                }
+                if (AlertingName.HasValue()) req.alertingName = AlertingName;
+                return client.updateLine(req);
+            });
+
+            if (line.Exception != null) throw line.Exception;            
+        }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "DirectoryNumber to retrieve")]
+        public string DirectoryNumber;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
+            Position = 1,
+            HelpMessage = "Directory URI")]
+        public string PrimaryDirectoryUri;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            Position = 2,
+            HelpMessage = "Alerting Name")]
+        public string AlertingName;
+    }        
 }

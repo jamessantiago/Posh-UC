@@ -6,6 +6,7 @@ echo "Building PoSH-Sodium"
 MSBuild ..\PoSH-UC.sln /p:Configuration=Debug /p:Platform="Any CPU"
 
 echo "Storing connection details"
+set impServer=10.10.20.17
 set ucServer=10.10.20.1
 set ucUsername=administrator
 set ucPassword=ciscopsdt
@@ -18,6 +19,6 @@ set webexPassword=password
 set webexEmail=test.user2@email.domain
 
 echo "Running tests"
-cmd /c ..\..\Pester\bin\pester.bat *Webex*
+cmd /c ..\..\Pester\bin\pester.bat
 
 pause

@@ -24,12 +24,10 @@ namespace Posh_UC
         {
             var user = CurrentWebexClient.Instance.Client.Execute(client =>
             {
-                var query = new lstUser();
-                if (Username.HasValue()) query.webExId = Username;
-                if (Active.IsPresent) query.active = activeType.ACTIVATED;
-                if (Inactive.IsPresent) query.active = activeType.DEACTIVATED;
-                if (Inactive.IsPresent || Active.IsPresent) query.activeSpecified = true;                                
-                return client.lstUser(query);
+                return client.getUser(new getUser
+                {
+                    webExId = Username
+                });
             });
             if (user.Exception != null)
                 throw user.Exception;
@@ -44,22 +42,7 @@ namespace Posh_UC
             Position = 0,
             HelpMessage = "Username to retrieve")]
         public string Username;
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true,
-            Position = 1,
-            HelpMessage = "User is active")]
-        public SwitchParameter Active;
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true,
-            Position = 2,
-            HelpMessage = "User is inactive")]
-        public SwitchParameter Inactive;
+        
     }
 
     [Cmdlet(VerbsCommon.Remove, "WebexUser")]
@@ -117,8 +100,12 @@ namespace Posh_UC
                 var action = new setUser();
                 action.webExId = WebExId;
                 action.activeSpecified = true;
-                if (Active) action.active = activeType.ACTIVATED;
-                else action.active = activeType.DEACTIVATED;
+                if (Active.HasValue && Active.Value)                    
+                    action.active = activeType.ACTIVATED;
+                else if (Active.HasValue)
+                    action.active = activeType.DEACTIVATED;
+                if (Email.HasValue())
+                    action.email = Email;
                 return client.setUser(action);
             });
             if (result.Exception != null)
@@ -135,11 +122,19 @@ namespace Posh_UC
         public string WebExId;
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 1,
             HelpMessage = "Set whether user is active or not")]
-        public bool Active;
+        public bool? Active;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
+            Position = 1,
+            HelpMessage = "Set whether user is active or not")]
+        public string Email;
     }
 }

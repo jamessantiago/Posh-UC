@@ -39,18 +39,17 @@ namespace Posh_UC
         public bool Loaded { get; private set; }
         public WebexClient Client { get; private set; }  
 
-        public void Connect(string Server, string Username, string Password, string Email = null, long? SiteId = null, string PartnerId = null,  bool verify = true)
+        public void Connect(string Server, string Username, string Password, string Email = null, string SiteName = null,  bool verify = true)
         {
             Loaded = false;
             var settings = new WebexClientSettings
             {
-                PartnetId = PartnerId,          
+                SiteName = SiteName,       
                 Server = Server,
                 User = Username,
                 Password = Password,
                 Email = Email
             };
-            if (SiteId.HasValue) settings.SiteId = SiteId.Value;
             if (verify)
             {
                 var tempClient = new WebexClient(settings);
@@ -98,7 +97,7 @@ namespace Posh_UC
                 Exception failure = null;
                 string email = Email ?? Credential.UserName;
                 try { CurrentWebexClient.Instance.Connect(Server, Credential.UserName, 
-                    Credential.Password.ConvertToUnsecureString(), email, SiteId, PartnerId, !DoNotVerify.IsPresent); }
+                    Credential.Password.ConvertToUnsecureString(), email, SiteName, !DoNotVerify.IsPresent); }
                 catch (Exception ex) { failure = ex; }
 
                 WriteObject(CurrentWebexClient.Instance.Loaded);
@@ -135,32 +134,25 @@ namespace Posh_UC
             Position = 2,
             HelpMessage = "Email address, will use username if not specified")]
         public string Email;
-
+        
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
-            HelpMessage = "Site id")]
-        public long? SiteId;
+            HelpMessage = "Site name")]
+        public string SiteName;
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 4,
-            HelpMessage = "Partner id")]
-        public string PartnerId;
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 5,
             HelpMessage = "Force to connect even if the client is already loaded")]
         public SwitchParameter Force;
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 6,
+            Position = 5,
             HelpMessage = "Skip connection verification")]
         public SwitchParameter DoNotVerify;
     }

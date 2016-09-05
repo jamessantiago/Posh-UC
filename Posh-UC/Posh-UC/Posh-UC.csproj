@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="agsXMPP, Version=1.1.1.0, Culture=neutral, PublicKeyToken=ff839b81f1debe86, processorArchitecture=MSIL">
+      <HintPath>..\packages\agsXMPP.1.1.1.0\lib\agsXMPP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GeneratedAxl_10_5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\UC.NET\UC.NET\UcClient\bin\Release\GeneratedAxl_10_5.dll</HintPath>
@@ -42,13 +46,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\UC.NET\UC.NET\UcClient\bin\Release\GeneratedRis_10_5.dll</HintPath>
     </Reference>
-    <Reference Include="GeneratedWebexXml_5_8, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e4d7c607d306df33, processorArchitecture=MSIL">
+    <Reference Include="GeneratedRoster_10_5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\GeneratedWebexXml_5_8.dll</HintPath>
+      <HintPath>Lib\GeneratedRoster_10_5.dll</HintPath>
+    </Reference>
+    <Reference Include="GeneratedWebexXml_5_9, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\UC.NET\UC.NET\UcClient\bin\Release\GeneratedWebexXml_5_9.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.4\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,6 +82,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImpConnection.cs" />
+    <Compile Include="Rosters.cs" />
     <Compile Include="WebexConnection.cs" />
     <Compile Include="Extensions.Axl.cs" />
     <Compile Include="Connection.cs" />
@@ -85,21 +99,30 @@
     <Compile Include="Users.cs" />
     <Compile Include="WebexMeetings.cs" />
     <Compile Include="WebexUsers.cs" />
+    <Compile Include="XmppConnection.cs" />
+    <Compile Include="XmppRooms.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\GeneratedAxl_10_5.dll" />
     <Content Include="Lib\GeneratedAxl_10_5.pdb" />
+    <Content Include="Lib\GeneratedEpas_10_5.dll" />
+    <Content Include="Lib\GeneratedEpas_10_5.pdb" />
     <Content Include="Lib\GeneratedPerf_10_5.dll" />
     <Content Include="Lib\GeneratedPerf_10_5.pdb" />
     <Content Include="Lib\GeneratedRis_10_5.dll" />
     <Content Include="Lib\GeneratedRis_10_5.pdb" />
-    <Content Include="Lib\GeneratedWebexXml_5_8.dll" />
-    <Content Include="Lib\GeneratedWebexXml_5_8.pdb" />
+    <Content Include="Lib\GeneratedRoster_10_5.dll" />
+    <Content Include="Lib\GeneratedRoster_10_5.pdb" />
+    <Content Include="Lib\GeneratedWebexXml_5_9.dll" />
+    <Content Include="Lib\GeneratedWebexXml_5_9.pdb" />
     <Content Include="Lib\Newtonsoft.Json.dll" />
     <Content Include="Lib\Newtonsoft.Json.xml" />
     <Content Include="Lib\UcClient.dll" />
     <Content Include="Lib\UcClient.instr.pdb" />
     <Content Include="Lib\UcClient.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
